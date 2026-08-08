@@ -1,0 +1,5 @@
+1. Always initialize
+2. Always add before committing
+3. Always commit after any major change
+4. Always commit before you push
+5. Always pull for new changes after working on a collab repo 
