@@ -1,4 +1,22 @@
-name: My First Workflow file
+name: My First Workflow file # NAME OF WORKFLOW
 
-on: 
-    push:
+on:
+  push: #EVENT
+
+jobs: # JOB
+  aws-secrets-on-github: #NAME OF JOB
+    runs-on: ubuntu-latest #RUNNER
+
+    steps: #STEP
+      - name: Checkout Repository # FIRST STEP
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials # SECOND STEP
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Verify AWS Connection # THIRD STEP
+        run: aws sts get-caller-identity
