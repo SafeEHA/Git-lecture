@@ -1,0 +1,13 @@
+name: My Second Workflow file
+
+on: 
+    push:
+
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+        steps:
+            - name: say hello
+              run: echo "Hello World"
+            - name: Show what triggered the workflow
+              run: echo "This event was triggered by ${{ .github.event_name }} event."
